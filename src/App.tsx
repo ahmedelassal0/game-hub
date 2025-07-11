@@ -1,15 +1,21 @@
 import { Provider } from './components/ui/provider';
-import { Button, HStack } from '@chakra-ui/react';
+import { Button, Grid, GridItem, HStack, Show } from '@chakra-ui/react';
 import './App.css'
 
 function App() {
 
   return (
     <Provider>
-      <HStack>
-        <Button>Click me</Button>
-        <Button>Click me</Button>
-      </HStack>
+      <Grid templateAreas={{
+        base: `"nav main"`,
+        lg: `"nav nav" "aside main"`,
+      }}>
+        <GridItem area='nav' bg='coral'>Nav</GridItem>
+
+        <GridItem display={{ base: 'none', lg: 'block' }} area='aside' bg='gold'>Aside</GridItem>
+
+        <GridItem area='main' bg='dodgerblue'>Main</GridItem>
+      </Grid>
     </Provider>
   )
 }
